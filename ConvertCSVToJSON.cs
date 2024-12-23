@@ -24,10 +24,11 @@ namespace Aruma.Integration
             string fileType = req.Query["fileType"];
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic request = JsonConvert.DeserializeObject(requestBody);
-            data = data ?? request?.data;
-            fileType = fileType ?? request?.fileType;
-            string result = "Testing: " + data.Length + " " + fileType;
+            _logger.LogInformation($"Request Body Size: {requestBody.Length}");
+            //dynamic request = JsonConvert.DeserializeObject(requestBody);
+            //data = data ?? request?.data;
+            //fileType = fileType ?? request?.fileType;
+            string result = $"Testing: {requestBody.Length}";
 
             //byte[] byteArray = Encoding.UTF8.GetBytes(data);
 
